@@ -3,11 +3,36 @@
     <div id="side-nav">
         <ul id="nav">
             <li class="list" current>
-                <a href="{{route('shops.index')}}">
+                <a href="#">
                     <i class="iconfont">&#xe761;</i>
-                    商家管理
+                    商铺管理
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
+                <ul class="sub-menu" style="display:none">
+                    <li>
+                        <a href="{{route('shops.index')}}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            商铺列表
+                        </a>
+                    </li>
+                </ul>
+            <li class="list" current>
+                <a href="#">
+                    <i class="iconfont">&#xe761;</i>
+                    用户管理
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu" style="display:none">
+                    <li>
+                        <a href="{{route('shops.audlists')}}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            待审核列表
+                        </a>
+                    </li>
+                </ul>
+
+            </li>
+
             </li>
             <li class="list">
                 <a href="javascript:;">
@@ -56,12 +81,19 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a href="./category.html">
+                        <a href="{{route('shop_category.index')}}">
                             <i class="iconfont">&#xe6a7;</i>
-                            分类列表
+                            商铺分类
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="iconfont">&#xe6a7;</i>
+                            商品分类
                         </a>
                     </li>
                 </ul>
+
             </li>
             <li class="list" >
                 <a href="javascript:;">
@@ -86,9 +118,9 @@
                 </a>
                 <ul class="sub-menu" style="display:none">
                     <li>
-                        <a href="./banner-list.html">
+                        <a href="{{route('admins.lists')}}">
                             <i class="iconfont">&#xe6a7;</i>
-                            轮播列表
+                           管理员列表
                         </a>
                     </li>
                 </ul>

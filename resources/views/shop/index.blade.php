@@ -72,22 +72,25 @@
                 {{--<td>{{$shop->notice}}</td>--}}
                 {{--<td>{{$shop->discount}}</td>--}}
                 {{--<td>{{$shop->status}}</td>--}}
+                @if($shop->status==1)
+                    <td class="td-status">
+                        <span class="layui-btn layui-btn-normal layui-btn-normal">火爆</span>
+                    </td>
+                @else
+                    <td class="td-status">
+                        <span class="layui-btn layui-btn-normal layui-btn-danger">禁用</span>
+                    </td>
+                @endif
 
-
-                <td class="td-status">
-                  <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span>
-                </td>
                 <td class="td-manage">
-                    <a style="text-decoration:none" onclick="member_stop(this,'10001')" href="javascript:;" title="停用">
-                        <i class="layui-icon">&#xe601;</i>
-                    </a>
+                    <a href="{{route('shops.top',[$shop])}}"> <i class="layui-icon">&#xe601;</i></a>
                     <a title="编辑" href="javascript:;" onclick="member_edit('编辑','member-edit.html','4','','510')"
                        class="ml-5" style="text-decoration:none">
                         <a href="{{route('shops.edit',[$shop])}}"><i class="layui-icon">&#xe642;</i></a>
                     </a>
                     <a style="text-decoration:none"  onclick="member_password('修改密码','member-password.html','10001','600','400')"
                        href="javascript:;" title="查看详情">
-                        <a href="{{route('shops.show',[$shop])}}"><i class="layui-icon">&#xf06c;</i></a>
+                        <a href=""><i class="layui-icon">&#xf06c;</i></a>
                     </a>
                     <a title="删除" href="javascript:;" onclick="member_del(this,'1')"
                        style="text-decoration:none">

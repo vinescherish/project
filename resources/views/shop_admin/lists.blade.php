@@ -1,5 +1,5 @@
 @extends("shop_layout.default")
-@section("title",'会员首页')
+@section("title",'管理员首页')
 @section("content")
 
     <form class="layui-form xbs" action="" method="get">
@@ -26,7 +26,7 @@
     <xblock>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon">&#xe640;</i>批量删除</button>
         <button class="layui-btn" onclicks="member_add('添加用户','/shop/member-add.html','600','500')">
-            <a href="{{route('users.reg')}}"><i class="layui-icon">&#xe608;</i>添加</a></button>
+            <a href="{{route('admins.reg')}}"><i class="layui-icon">&#xe608;</i>添加</a></button>
         <span class="x-right" style="line-height:40px">共有数据：88 条</span></xblock>
     <table class="layui-table">
         <thead>
@@ -34,7 +34,7 @@
             <th><input type="checkbox" name="" value=""></th>
             <th>ID</th>
             <th>用户名</th>
-            <th>所属商家</th>
+            {{--<th>所属商家</th>--}}
             <th>邮箱地址</th>
             <th>是否管理员</th>
             <th>账户状态</th>
@@ -42,27 +42,42 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($users as $user)
+        @foreach($admins as $admin)
             <tr>
                 <td><input type="checkbox" value="1" name=""></td>
-                <td>{{$user->id}}</td>
-                <td>{{$user->name}}</td>
-                <td>{{$user->getShop->shop_name}}</td>
-                <td>{{$user->email}}</td>
-                <td>{{$user->status_user==1?'是':'否'}}</td>
-                {{--<td>{{$user->status}}</td>--}}
+                <td>{{$admin->id}}</td>
+                <td>{{$admin->name}}</td>
+                <td>{{$admin->email}}</td>
+               {{--<td>{{$admin->status==1?'是':'否'}}</td>--}}
+                {{--<td>{{$admin->status}}</td>--}}
 
+                @if($admin->status_admin==1)
+                    <td class="td-status">
+                        <span class="layui-btn layui-btn-normal layui-btn-normal">是</span>
+                    </td>
+                @else
+                    <td class="td-status">
+                        <span class="layui-btn layui-btn-normal layui-btn-danger">否</span>
+                    </td>
+                @endif
+
+                @if($admin->status==1)
+                    <td class="td-status">
+                        <span class="layui-btn layui-btn-normal layui-btn-normal">启用</span>
+                    </td>
+                @else
+                    <td class="td-status">
+                        <span class="layui-btn layui-btn-normal layui-btn-danger">禁用</span>
+                    </td>
+                @endif
 
                 <td class="td-status">
-                    <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span>
-                </td>
-                <td class="td-manage">
-                    <a style="text-decoration:none" onclick="member_stop(this,'10001')" href="javascript:;" title="停用">
-                        <i class="layui-icon">&#xe601;</i>
-                    </a>
+                    <a href="{{route('admins.top',[$admin])}}"> <i class="layui-icon">&#xe601;</i></a>
+
+
                     <a title="编辑" href="javascript:;" onclick="member_edit('编辑','member-edit.html','4','','510')"
                        class="ml-5" style="text-decoration:none">
-                        <a href="{{route('users.edit',[$user])}}"><i class="layui-icon">&#xe642;</i></a>
+                        <a href="{{route('admins.edit',[$admin])}}"><i class="layui-icon">&#xe642;</i></a>
                     </a>
                     <a style="text-decoration:none"
                        onclick="member_password('修改密码','member-password.html','10001','600','400')"
@@ -71,7 +86,7 @@
                     </a>
                     <a title="删除" href="javascript:;" onclick="member_del(this,'1')"
                        style="text-decoration:none">
-                        <a href="{{route('users.del',[$user])}}"> <i class="layui-icon">&#xe640;</i></a>
+                        <a href="{{route('admins.del',[$admin])}}"> <i class="layui-icon">&#xe640;</i></a>
                     </a>
                 </td>
             </tr>
@@ -80,5 +95,5 @@
 
     </table>
 
-    {{$users->appends(['search'=>$search])->links()}}
+    {{$admins->appends(['search'=>$search])->links()}}
 @endsection

@@ -39,17 +39,7 @@
                 <input type="text" name="password" lay-verify="required" placeholder="请输入你的密码" autocomplete="off" class="layui-input">
             </div>
         </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label login-form"><i class="iconfont">&#xe82b;</i></label>
-            <div class="layui-input-inline login-inline">
-                <select name="shop_id" id="" class="layui-input" >
-                    <option value="">选择商家,没有不选</option>
-                    @foreach($shops as $shop)
-                    <option value="{{$shop->id}}">{{$shop->shop_name}}</option>
-                    @endforeach
-                </select>
-            </div>
-        </div>
+
         <div class="form-actions">
             <button class="btn btn-warning pull-right" lay-submit lay-filter="login"  type="submit">注册</button>
             <div class="forgot"><a href="#" class="forgot">忘记帐号或者密码</a></div>
@@ -76,21 +66,7 @@
     <div class="bg-out"></div>
     <div id="changer-set"><i class="iconfont">&#xe696;</i></div>
 </div>
-{{--<script>--}}
-    {{--$(function  () {--}}
-        {{--layui.use('form', function(){--}}
-            {{--var form = layui.form();--}}
-            {{--//监听提交--}}
-            {{--form.on('submit(login)', function(data){--}}
-                {{--layer.msg(JSON.stringify(data.field),function(){--}}
-                    {{--location.href='index.html'--}}
-                {{--});--}}
-                {{--return false;--}}
-            {{--});--}}
-        {{--});--}}
-    {{--})--}}
 
-{{--</script>--}}
 
 
 </body>

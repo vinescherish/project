@@ -31,7 +31,7 @@
                 <span class="x-red">*</span>店铺图片
             </label>
             <div class="layui-input-inline">
-                <input type="file" id="L_username" name="shop_img" required="" lay-verify="nikename"
+                <input type="file" id="L_username" name="shop_img"
                value=""        autocomplete="off" class="layui-input">
                 <img src="/uploads/{{"$shop->shop_img"}}" width="80" alt="">
             </div>
@@ -42,7 +42,7 @@
             </label>
             <div class="layui-input-inline">
                 <input type="text" id="L_username" name="shop_rating" required="" lay-verify="nikename"
-              value="{{$shop->shop_rating}}"         autocomplete="off" class="layui-input">
+              value="{{$shop->shop_rating}}"         autocomplete="off" class="layui-input" style="width: 140%">
             </div>
         </div>
         <div class="layui-form-item">
@@ -74,7 +74,7 @@
             <div class="layui-inline">
                 <div class="layui-input-inline">
                     <input type="radio" name="niao" value="1" checked title="是" @if($shop->niao==1)  checked @endif>
-                    <input type="radio" name="niao" value="0" title="否" @if($shop->ShopInfo->bao==0)  checked @endif>
+                    <input type="radio" name="niao" value="0" title="否" @if($shop->niao==0)  checked @endif>
                 </div>
             </div>
         </div>
@@ -84,8 +84,8 @@
             </label>
             <div class="layui-inline">
                 <div class="layui-input-inline">
-                    <input type="radio" name="bao" value="1" checked title="是" @if($shop->ShopInfo->bao==1)  checked @endif>
-                    <input type="radio" name="bao" value="0" title="否" @if($shop->ShopInfo->bao==0)  checked @endif>
+                    <input type="radio" name="bao" value="1" checked title="是" @if($shop->bao==1)  checked @endif>
+                    <input type="radio" name="bao" value="0" title="否" @if($shop->bao==0)  checked @endif>
                 </div>
             </div>
         </div>
@@ -95,8 +95,8 @@
             </label>
             <div class="layui-inline">
                 <div class="layui-input-inline">
-                    <input type="radio" name="piao" value="1" checked title="是" @if($shop->ShopInfo->piao==1)  checked @endif>
-                    <input type="radio" name="piao" value="0" title="否" @if($shop->ShopInfo->piao==0)  checked @endif>
+                    <input type="radio" name="piao" value="1" checked title="是" @if($shop->piao==1)  checked @endif>
+                    <input type="radio" name="piao" value="0" title="否" @if($shop->piao==0)  checked @endif>
                 </div>
             </div>
         </div>
@@ -106,8 +106,8 @@
             </label>
             <div class="layui-inline">
                 <div class="layui-input-inline">
-                    <input type="radio" name="zhun" value="1" checked title="是" @if($shop->ShopInfo->zhun==1)  checked @endif>
-                    <input type="radio" name="zhun" value="0" title="否" @if($shop->ShopInfo->zhun==0)  checked @endif>
+                    <input type="radio" name="zhun" value="1" checked title="是" @if($shop->zhun==1)  checked @endif>
+                    <input type="radio" name="zhun" value="0" title="否" @if($shop->zhun==0)  checked @endif>
                 </div>
             </div>
         </div>
@@ -117,7 +117,7 @@
             </label>
             <div class="layui-input-inline">
                 <input type="text" id="L_username" name="start_send" required="" lay-verify="nikename"
-            value="{{$shop->ShopInfo->start_send}}"           autocomplete="off" class="layui-input">
+            value="{{$shop->start_send}}"           autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
@@ -126,7 +126,7 @@
             </label>
             <div class="layui-input-inline">
                 <input type="text" id="L_username" name="start_cost" required="" lay-verify="nikename"
-                value="{{$shop->ShopInfo->start_cost}}"       autocomplete="off" class="layui-input">
+                value="{{$shop->start_cost}}"       autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item layui-form-text">
@@ -135,7 +135,7 @@
             </label>
             <div class="layui-input-block">
                         <textarea placeholder="随便写些什么刷下存在感" id="L_sign" name="notice" autocomplete="off"
-                                  class="layui-textarea" style="height: 80px;">{{$shop->ShopInfo->notice}}</textarea>
+                                  class="layui-textarea" style="height: 80px;">{{$shop->notice}}</textarea>
             </div>
         </div>
         <div class="layui-form-item layui-form-text">
@@ -144,7 +144,7 @@
             </label>
             <div class="layui-input-block">
                         <textarea placeholder="随便写些什么刷下存在感" id="L_sign" name="discount" autocomplete="off"
-                                  class="layui-textarea" style="height: 80px;">{{$shop->ShopInfo->discount}}</textarea>
+                                  class="layui-textarea" style="height: 80px;">{{$shop->discount}}</textarea>
             </div>
         </div>
 

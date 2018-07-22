@@ -45,6 +45,12 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+
+        //添加一个guards
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',//数据提示者
+        ],
     ],
 
     /*
@@ -70,6 +76,11 @@ return [
             'model' =>App\Models\user::class
         ],
 
+        //提供平台登录
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => \App\Models\Admin::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
