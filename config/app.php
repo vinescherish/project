@@ -164,9 +164,12 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+
         /*
          * Package Service Providers...
          */
+//        ueditor:~1.0
+        Overtrue\LaravelUEditor\UEditorServiceProvider::class,
 
         /*
          * Application Service Providers...

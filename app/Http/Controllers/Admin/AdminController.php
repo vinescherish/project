@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 
-class AdminController extends Controller
+class AdminController extends BaseController
 {
     /**
      * 管理员列表
@@ -42,6 +42,7 @@ class AdminController extends Controller
             if(!$request->post('password')){
                 $data['password']=$password;
             }
+            $data['password']=bcrypt($request->post('password'));
             //入库
             if ($admin->update($data)) {
 //                跳转
@@ -98,6 +99,11 @@ class AdminController extends Controller
             //已验证
             if(Auth::guard('admin')->attempt(['name'=>$request->post('name'),'password'=>$request->post('password')],$request->has('remember'))){
 
+              if(Auth::guard('admin')->user()->status===0){
+                  Auth::logout();
+                  return redirect()->route('admins.login');
+              }
+
                 //跳转
                 return redirect()->route('admins.lists');
             }else{
@@ -130,7 +136,7 @@ class AdminController extends Controller
      */
     public function logout(Request $request)
     {
-        Auth::logout();
+       Auth::logout();
         //提示
         $request->session()->flash('success', '注销成功');
         //跳转  intended 如果有来路，就跳来路，如果没有跳默认页

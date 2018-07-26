@@ -57,10 +57,29 @@ class Handler extends ExceptionHandler
      * @param AuthenticationException $exception
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
+//    protected function unauthenticated($request, AuthenticationException $exception)
+//    {
+//        return $request->expectsJson()
+//            ? response()->json(['message' => $exception->getMessage()], 401)
+//            : redirect()->guest(route('user.login'));
+//    }
+
+    /**
+     * 重写实现未认证用户跳转至相应登陆页
+     * @param \Illuminate\Http\Request $request
+     * @param AuthenticationException $exception
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
     protected function unauthenticated($request, AuthenticationException $exception)
     {
-        return $request->expectsJson()
-            ? response()->json(['message' => $exception->getMessage()], 401)
-            : redirect()->guest(route('user.login'));
+
+        //return $request->expectsJson()
+        //            ? response()->json(['message' => $exception->getMessage()], 401)
+        //            : redirect()->guest(route('login'));
+        if ($request->expectsJson()) {
+            return response()->json(['message' => $exception->getMessage()], 401);
+        } else {
+            return in_array('admin', $exception->guards()) ? redirect()->guest('/admins/login') : redirect()->guest(route('users.login'));
+        }
     }
 }

@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 
-class ShopController extends Controller
+class ShopController extends BaseController
 {
     /**
      * 展示首页列表

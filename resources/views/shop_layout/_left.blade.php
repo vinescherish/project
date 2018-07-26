@@ -19,7 +19,7 @@
             <li class="list" current>
                 <a href="#">
                     <i class="iconfont">&#xe761;</i>
-                    用户管理
+                    用户审核
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu" style="display:none">
@@ -42,7 +42,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a href="{{route('users.lists')}}">
+                        <a href="{{route('user.lists')}}">
                             <i class="iconfont">&#xe6a7;</i>
                             会员列表
                         </a>
@@ -98,14 +98,14 @@
             <li class="list" >
                 <a href="javascript:;">
                     <i class="iconfont">&#xe6a3;</i>
-                    轮播管理
+                    活动管理
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu" style="display:none">
                     <li>
-                        <a href="./banner-list.html">
+                        <a href="{{route('active.index')}}">
                             <i class="iconfont">&#xe6a7;</i>
-                            轮播列表
+                            活动列表
                         </a>
                     </li>
                 </ul>

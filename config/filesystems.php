@@ -69,6 +69,16 @@ return [
             'bucket' => env('AWS_BUCKET'),
         ],
 
+
+        'oss' => [
+            'driver'        => 'oss',
+            'access_id'     => 'LTAIsXqYKETIi2e3',
+            'access_key'    => 'q6Ez5iU5TEL5aYix5y4oAHIDMBVUDQ',
+            'bucket'        => 'lunyk',
+            'endpoint'      => 'oss-cn-shanghai.aliyuncs.com', // OSS 外网节点或自定义外部域名
+            'debug'         => false
+        ],
+
     ],
 
 ];

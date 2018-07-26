@@ -32,7 +32,8 @@
         {{--@include("layouts._errors")--}}
         {{--包含消息提示子视图--}}
         {{--@include("layouts._msg")--}}
-
+            {{--uedtor样式--}}
+            @include('vendor.ueditor.assets')
         <!-- 右侧内容框架，更改从这里开始 -->
             @yield('content')
         <!-- 右侧内容框架，更改从这里结束 -->
@@ -42,7 +43,7 @@
 </div>
 <!-- 中部结束 -->
 <!-- 底部开始 -->
-@include('shop_layout._footer')
+{{--@include('shop_layout._footer')--}}
 <!-- 底部结束 -->
 <!-- 背景切换开始 -->
 @include('shop_layout._beijing')

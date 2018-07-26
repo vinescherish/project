@@ -16,6 +16,6 @@ class Shop extends Model
     }
     //找到当前的商铺的用户
     public  function user(){
-        return $this->belongsTo(User::class,'user_id');
+        return $this->hasOne(User::class,'shop_id');
     }
 }

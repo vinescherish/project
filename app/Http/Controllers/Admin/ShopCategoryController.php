@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 
-class ShopCategoryController extends Controller
+class ShopCategoryController extends BaseController
 {
     /**
      * 展示分类列表

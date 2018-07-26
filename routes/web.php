@@ -36,15 +36,15 @@ Route::domain('admin.ele.com')->namespace('Admin')->group(function () {
 
 
 ////商家信息
-//
-//    Route::get('shops/index',"ShopController@index")->name('shops.index');
-//    Route::any('shops/add',"ShopController@add")->name('shops.add');
-//    Route::any('shops/edit/{id}',"ShopController@edit")->name('shops.edit');
-//    Route::get('shops/del/{id}',"ShopController@del")->name('shops.del');
-//    Route::get('shops/show/{id}',"ShopController@show")->name('shops.show');
+
+    Route::get('shops/index',"ShopController@index")->name('shops.index');
+    Route::any('shops/add',"ShopController@add")->name('shops.add');
+    Route::any('shops/edit/{id}',"ShopController@edit")->name('shops.edit');
+    Route::get('shops/del/{id}',"ShopController@del")->name('shops.del');
+    Route::get('shops/show/{id}',"ShopController@show")->name('shops.show');
 
 
-    //平台管理员
+//平台管理员
     Route::any('admins/reg',"AdminController@reg")->name('admins.reg');
     Route::get('admins/lists',"AdminController@lists")->name('admins.lists');
     Route::any('admins/edit/{id}',"AdminController@edit")->name('admins.edit');
@@ -55,33 +55,42 @@ Route::domain('admin.ele.com')->namespace('Admin')->group(function () {
     Route::any('admins/login',"AdminController@login")->name('admins.login');
 
 
-
 //商铺
     Route::get('shops/index',"ShopController@index")->name('shops.index');
     Route::any('shops/add',"ShopController@add")->name('shops.add');
     Route::any('shops/edit/{id}',"ShopController@edit")->name('shops.edit');
     Route::get('shops/del/{id}',"ShopController@del")->name('shops.del');
     Route::get('shops/top/{id}',"ShopController@top")->name('shops.top');
+    //待审核列表
     Route::get('shops/audlists',"ShopController@audlists")->name('shops.audlists');
     //用户审核
     Route::get('shops/aud/{id}',"ShopController@aud")->name('shops.aud');
 
+//用户信息
+
+    Route::get('user/lists',"UserController@lists")->name('user.lists');
+    Route::any('user/edit/{id}',"UserController@edit")->name('user.edit');
+    Route::get('user/del/{id}',"UserController@del")->name('user.del');
+    Route::any('user/show/{id}',"UserController@show")->name('user.show');
+    Route::any('user/add',"UserController@add")->name('user.add');
 
 
-
+    //活动管理
+    Route::get('active/index',"ActiveController@index")->name('active.index');
+    Route::any('active/edit/{id}',"ActiveController@edit")->name('active.edit');
+    Route::get('active/del/{id}',"ActiveController@del")->name('active.del');
+//    Route::any('active/show/{id}',"ActiveController@show")->name('active.show');
+    Route::any('active/add',"ActiveController@add")->name('active.add');
+    Route::any('active/show/{id}',"ActiveController@show")->name('active.show');
 
 });
 
-//商户信息
+//商户平台
 Route::domain('shop.ele.com')->namespace('Shop')->group(function () {
 
 
-
-
-//商家账号
-
     //会员管理
-    Route::any('users/reg',"UserController@reg")->name('users.reg');
+
     Route::get('users/lists',"UserController@lists")->name('users.lists');
     Route::any('users/edit/{id}',"UserController@edit")->name('users.edit');
     Route::get('users/del/{id}',"UserController@del")->name('users.del');
@@ -90,19 +99,33 @@ Route::domain('shop.ele.com')->namespace('Shop')->group(function () {
 
     Route::get('users/logout',"UserController@logout")->name('users.logout');
     Route::any('users/login',"UserController@login")->name('users.login');
-    Route::any('users/reg',"UserController@reg")->name('users/reg');
+    Route::any('users/reg',"UserController@reg")->name('users.reg');
+
+//菜品分类管理
+    Route::get('menu_category/index',"MenuCategoryController@index")->name('menu_category.index');
+    Route::any('menu_category/edit/{id}',"MenuCategoryController@edit")->name('menu_category.edit');
+    Route::get('menu_category/del/{id}',"MenuCategoryController@del")->name('menu_category.del');
+    Route::get('menu_category/top/{id}',"MenuCategoryController@top")->name('menu_category.top');
+
+    Route::any('menu_category/add',"MenuCategoryController@add")->name('menu_category.add');
+
+//菜品管理
+    Route::get('menus/index',"MenuController@index")->name('menus.index');
+    Route::any('menus/edit/{id}',"MenuController@edit")->name('menus.edit');
+    Route::get('menus/del/{id}',"MenuController@del")->name('menus.del');
+    Route::any('menus/add',"MenuController@add")->name('menus.add');
+    Route::get('menus/top/{id}',"MenuController@top")->name('menus.top');
 
 
-
-
-
+//活动管理
+    Route::get('actives/index',"ActiveController@index")->name('actives.index');
+    Route::any('actives/show/{id}',"ActiveController@show")->name('actives.show');
 
 });
 
 //商户
 Route::domain('www.ele.com')->namespace('User')->group(function () {
-    Route::get('user/index',"UserController@index");
-    Route::get('user/reg',"UserController@reg");
+
 
 
 });
