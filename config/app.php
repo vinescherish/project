@@ -163,7 +163,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
+//       短信验证
+        Mrgoon\AliSms\ServiceProvider::class,
 
         /*
          * Package Service Providers...

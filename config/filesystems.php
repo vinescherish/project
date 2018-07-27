@@ -52,6 +52,7 @@ return [
         'public_images' => [
             'driver' => 'local',
             'root' => public_path('uploads'),
+            'url' => '/',
         ],
 
         'public' => [

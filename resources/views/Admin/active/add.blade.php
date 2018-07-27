@@ -65,10 +65,10 @@
             <div class="layui-form-item">
                 <label class="layui-form-label xbs768">日期范围</label>
                 <div class="layui-input-inline xbs768">
-                    <input    class="layui-input" placeholder="开始日" id="LAY_demorange_s" name="start_time">
+                    <input    class="layui-input" placeholder="开始日" id="LAY_demorange_s" name="start_time" required="">
                 </div>
                 <div class="layui-input-inline xbs768">
-                    <input class="layui-input" placeholder="截止日" id="LAY_demorange_e" name="end_time">
+                    <input class="layui-input" placeholder="截止日" id="LAY_demorange_e" name="end_time" required="">
                 </div>
             </div>
             {{--<div class="layui-form-item">--}}

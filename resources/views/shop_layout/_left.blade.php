@@ -48,25 +48,25 @@
                         </a>
                     </li>
                     <li>
-                        <a href="member-del.html">
+                        <a href="#">
                             <i class="iconfont">&#xe6a7;</i>
                             会员删除
                         </a>
                     </li>
                     <li>
-                        <a href="member-level.html">
+                        <a href="#">
                             <i class="iconfont">&#xe6a7;</i>
                             等级管理
                         </a>
                     </li>
                     <li>
-                        <a href="member-kiss.html">
+                        <a href="#">
                             <i class="iconfont">&#xe6a7;</i>
                             积分管理
                         </a>
                     </li>
                     <li>
-                        <a href="member-view.html">
+                        <a href="#">
                             <i class="iconfont">&#xe6a7;</i>
                             浏览记录
                         </a>
@@ -133,37 +133,37 @@
                 </a>
                 <ul class="sub-menu" style="display:none">
                     <li>
-                        <a href="./echarts1.html">
+                        <a href="#">
                             <i class="iconfont">&#xe6a7;</i>
                             拆线图
                         </a>
                     </li>
                     <li>
-                        <a href="./echarts2.html">
+                        <a href="#">
                             <i class="iconfont">&#xe6a7;</i>
                             柱状图
                         </a>
                     </li>
                     <li>
-                        <a href="./echarts3.html">
+                        <a href="#">
                             <i class="iconfont">&#xe6a7;</i>
                             地图
                         </a>
                     </li>
                     <li>
-                        <a href="./echarts4.html">
+                        <a href="#">
                             <i class="iconfont">&#xe6a7;</i>
                             饼图
                         </a>
                     </li>
                     <li>
-                        <a href="./echarts5.html">
+                        <a href="#">
                             <i class="iconfont">&#xe6a7;</i>
                             k线图
                         </a>
                     </li>
                     <li>
-                        <a href="./echarts6.html">
+                        <a href="#">
                             <i class="iconfont">&#xe6a7;</i>
                             仪表图
                         </a>

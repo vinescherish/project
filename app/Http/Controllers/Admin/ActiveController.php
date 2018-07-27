@@ -51,8 +51,12 @@ class ActiveController extends BaseController
      */
     public function  add(Request $request){
            if($request->isMethod('post')){
-
+//             验证
+               $this->validate($request,[
+                   'content'=>'required'
+               ]);
 //               dd($request->post());
+
                if (Active::create($request->post())) {
                    return redirect()->route('active.index');
                }

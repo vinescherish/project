@@ -123,11 +123,6 @@ Route::domain('shop.ele.com')->namespace('Shop')->group(function () {
 
 });
 
-//商户
-Route::domain('www.ele.com')->namespace('User')->group(function () {
 
-
-
-});
 
 
