@@ -16,24 +16,24 @@
 </head>
 <body>
 <!-- 顶部开始 -->
-@include('Home.shop_layout_home._header')
+@include('shop_layout._header')
 <!-- 顶部结束 -->
 
 <!-- 中部开始 -->
 <div class="wrapper">
     <!-- 左侧菜单开始 -->
-@include('Home.shop_layout_home._left')
+@include('shop_layout._left')
 <!-- 左侧菜单结束 -->
 
     <!-- 右侧主体开始 -->
     <div class="page-content">
         <div class="content">
         {{--包含提示错误信息子视图--}}
-        {{--@include("layouts._errors")--}}
+        {{--@include("shop_layout._errors")--}}
         {{--包含消息提示子视图--}}
-        {{--@include("layouts._msg")--}}
-        @include('vendor.ueditor.assets')
-
+        {{--@include("shop_layout._msg")--}}
+            {{--uedtor样式--}}
+            @include('vendor.ueditor.assets')
         <!-- 右侧内容框架，更改从这里开始 -->
             @yield('content')
         <!-- 右侧内容框架，更改从这里结束 -->
@@ -43,10 +43,10 @@
 </div>
 <!-- 中部结束 -->
 <!-- 底部开始 -->
-{{--@include('Home.shop_layout_home._footer')--}}
+{{--@include('shop_layout._footer')--}}
 <!-- 底部结束 -->
 <!-- 背景切换开始 -->
-@include('Home.shop_layout_home._beijing')
+@include('shop_layout._beijing')
 <!-- 背景切换结束 -->
 <!-- 页面动态效果 -->
 <script>
@@ -144,6 +144,5 @@
     }
 </script>
 
-@yield('js')
 </body>
 </html>

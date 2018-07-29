@@ -75,8 +75,8 @@ class MenuController extends BaseController
             }
             $data = $request->post();
             //处理图片
-            $data['goods_img'] = $request->file('goods_img')->store("lunyk","oss");
-
+            $fileName=$request->file('goods_img')->store('lunky','oss');
+            $data['goods_img'] = env("ALIYUN_OSS_URL") . $fileName;
 
             $data['shop_id'] = $shopId;
             //入库
@@ -111,7 +111,8 @@ class MenuController extends BaseController
             $data=$request->input();
             //判断是否上传图片
             if($request->file('goods_img')){
-                $data['goods_img']=$request->file('goods_img')->store('lunky','oss');
+                $fileName=$request->file('goods_img')->store('lunky','oss');
+                $data['goods_img'] = env("ALIYUN_OSS_URL") . $fileName;
                 //删除旧图片
                 File::delete("uploads/$pachImg");
 

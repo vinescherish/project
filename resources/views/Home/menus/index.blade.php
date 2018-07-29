@@ -73,9 +73,9 @@
 
 
                 @if($menu->goods_img)
-                    <td><img src="https://lunyk.oss-cn-shanghai.aliyuncs.com/{{$menu->goods_img}}?x-oss-process=image/resize,w_80,h_80" ></td>
+                    <td><img src="{{$menu->goods_img}}?x-oss-process=image/resize,w_80,h_80" ></td>
                 @else
-                    <td><img src="/uploads/menus/1.jpeg" width="80"></td>
+                    <td></td>
                 @endif
 
 

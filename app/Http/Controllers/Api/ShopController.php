@@ -65,7 +65,10 @@ class ShopController extends Controller
         $cates=MenuCategory::where('shop_id',$id)->get();
 
         foreach ($cates as $cate){
-            $cate->goods_list=Menus::where('category_id',$cate->id)->get();
+            //取出所有分类下所有商品
+            $goods=Menus::where('category_id',$cate->id)->get();
+
+            $cate->goods_list=$goods;
         }
         $shop->commodity=$cates;
 

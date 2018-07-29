@@ -19,3 +19,10 @@ use Illuminate\Http\Request;
 //商品分类列表
 Route::get('shop/lists','Api\ShopController@lists');
 Route::get('shop/index','Api\ShopController@index');
+
+
+Route::any('member/reg','Api\MemberController@reg');
+Route::any('member/login','Api\MemberController@login');
+Route::any('member/sms','Api\MemberController@sms');
+Route::post('member/forget','Api\MemberController@forget');
+Route::any('member/change','Api\MemberController@change');
