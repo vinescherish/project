@@ -1,4 +1,4 @@
-@extends("Home.shop_layout_home.default")
+@extends("Home.home_layout.default")
 @section("title",'管理员首页')
 @section("content")
 
@@ -26,7 +26,7 @@
     <xblock>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon">&#xe640;</i>批量删除</button>
         <button class="layui-btn" onclicks="member_add('添加用户','/shop/member-add.html','600','500')">
-            <a href="{{route('admins.reg')}}"><i class="layui-icon">&#xe608;</i>添加</a></button>
+            <a href="#"><i class="layui-icon">&#xe608;</i>添加</a></button>
         <span class="x-right" style="line-height:40px">共有数据：88 条</span></xblock>
     <table class="layui-table">
         <thead>
@@ -73,7 +73,7 @@
                     <a style="text-decoration:none"
                        onclick="member_password('修改密码','member-password.html','10001','600','400')"
                        href="javascript:;" title="查看详情">
-                        <a href="{{route('users.show',[$user])}}"><i class="layui-icon">&#xf06c;</i></a>
+                        <a href="{{route('users.show',[$user])}}"><i class="layui-icon">&#xe648;</i></a>
                     </a>
                     <a title="删除" href="javascript:;" onclick="member_del(this,'1')"
                        style="text-decoration:none">

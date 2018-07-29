@@ -1,4 +1,4 @@
-@extends('shop_layout.default')
+@extends("Admin.admin_layout.default")
 @section("title",'管理员编辑')
 @section("content")
 

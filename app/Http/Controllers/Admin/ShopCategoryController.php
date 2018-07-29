@@ -19,7 +19,7 @@ class ShopCategoryController extends BaseController
         $search=$request->search;
         $shopCate=ShopCategory::where('name','like',"%$search%")->paginate(3);
 
-        return view('Category.index',compact('search','shopCate'));
+        return view('Admin.Category.index',compact('search','shopCate'));
     }
 
     /**
@@ -56,7 +56,7 @@ class ShopCategoryController extends BaseController
         }
 
         //展示添加页面
-        return view('Category.add');
+        return view('Admin.Category.add');
     }
 
     /**
@@ -105,7 +105,7 @@ class ShopCategoryController extends BaseController
 
         }
         //展示页面传递参数
-        return view('Category.edit',compact('shopCate'));
+        return view('Admin.Category.edit',compact('shopCate'));
     }
 
     /**

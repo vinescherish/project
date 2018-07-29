@@ -1,4 +1,4 @@
-@extends("Home.shop_layout_home.default")
+@extends("Home.home_layout.default")
 @section("title",'管理员编辑')
 @section("content")
 

@@ -184,11 +184,10 @@ class MemberController extends Controller
 
     public function change(Request $request)
     {
-
         //接收参数
         $data = $request->post();
         //找到当前用户
-        $member=Member::findOrFail($data['id']);
+        $member = Member::findOrFail($data['id']);
         //验证密码是否与原密码一致
 
         if (Hash::check($request->post('oldPassword'), $member->password)) {

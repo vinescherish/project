@@ -24,7 +24,7 @@ class ShopController extends BaseController
         //得到数据
         $shops = Shop::where('shop_name', 'like', "%$search%")->paginate(4);
 
-        return view("shop.index", compact('shops', 'search'));
+        return view("Admin.shop.index", compact('shops', 'search'));
     }
 
     /**
@@ -64,7 +64,7 @@ class ShopController extends BaseController
             return redirect()->route('shops.index');
         }
         //展示视图
-        return view('shop.add', compact('shopCate'));
+        return view('Admin.shop.add', compact('shopCate'));
     }
 
     /**
@@ -102,7 +102,7 @@ class ShopController extends BaseController
             //跳转
             return redirect()->route('shops.index');
         }
-        return view('shop.edit', compact('shop','shopCate'));
+        return view('Admin.shop.edit', compact('shop','shopCate'));
     }
 
     /**
@@ -154,7 +154,7 @@ class ShopController extends BaseController
 
         //得到数据
         $users = User::where('status_user','=',0)->paginate(2);
-       return view('shop.aud',compact('users','search'));
+       return view('Admin.shop.aud',compact('users','search'));
     }
 
     /**

@@ -1,4 +1,4 @@
-@extends("Home.shop_layout_home.default")
+@extends("Home.home_layout.default")
 @section("title",'活动列表')
 @section("content")
 
@@ -75,7 +75,7 @@
                     <a style="text-decoration:none"
                        onclick="member_password('修改密码','member-password.html','10001','600','400')"
                        href="javascript:;" title="查看详情">
-                        <a href="{{route('actives.show',[$active])}}"><i class="layui-icon">&#xf06c;</i></a>
+                        <a href="{{route('actives.show',[$active])}}"><i class="layui-icon">&#xe648;</i></a>
                     </a>
                     <a title="删除" href="javascript:;" onclick="member_del(this,'1')"
                        style="text-decoration:none">

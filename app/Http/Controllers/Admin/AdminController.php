@@ -22,7 +22,7 @@ class AdminController extends BaseController
         //取得所有数据
         $admins=Admin::where('name','like',"%$search%")->paginate(3);
 //         $users=User::all();
-        return view('shop_admin.lists',compact('admins','search'));
+        return view('Admin.shop_admin.lists',compact('admins','search'));
     }
 
     /**
@@ -51,7 +51,7 @@ class AdminController extends BaseController
             }
         }
 
-        return view('shop_admin.edit',compact('admin'));
+        return view('Admin.shop_admin.edit',compact('admin'));
     }
 
     /**
@@ -87,7 +87,7 @@ class AdminController extends BaseController
             return redirect()->route('admins.login');
         }
 
-        return view('shop_admin.reg');
+        return view('Admin.shop_admin.reg');
     }
 
     /**
@@ -111,7 +111,7 @@ class AdminController extends BaseController
                 return redirect()->route('admins.login');
             }
         }
-        return view('shop_admin.login');
+        return view('Admin.shop_admin.login');
     }
 
     /**
