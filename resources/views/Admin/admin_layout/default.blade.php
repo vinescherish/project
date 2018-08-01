@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>后台登录-X-admin1.1</title>
+    <title>@yield('title')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="/project/css/font.css">
@@ -31,9 +31,9 @@
         {{--引入ueditor编辑器样式--}}
         @include('vendor.ueditor.assets')
         {{--引入提示消息--}}
-        @include('Admin.admin_layout._msg')
+        {{--@include('Admin.admin_layout._msg')--}}
         {{--引入错误提示信息--}}
-        @include('Admin.admin_layout._errors')
+        {{--@include('Admin.admin_layout._errors')--}}
         {{--内容嵌入  --}}
         @yield('content')
         <!-- 右侧内容框架，更改从这里结束 -->
@@ -43,7 +43,7 @@
 </div>
 <!-- 中部结束 -->
 <!-- 底部开始 -->
-@include('Admin.admin_layout._footer')
+{{--@include('Admin.admin_layout._footer')--}}
 <!-- 底部结束 -->
 <!-- 背景切换开始 -->
 @include('Admin.admin_layout._beijing')

@@ -44,10 +44,9 @@
         </div>
 
 
-        {{--<div class="form-actions">--}}
+
             <button class="btn btn-warning pull-right" lay-submit lay-filter="login"  type="submit">确认更改</button>
-            {{--<div class="forgot"><a href="#" class="forgot">忘记帐号或者密码</a></div>--}}
-        {{--</div>--}}
+
     </form>
 
 @endsection

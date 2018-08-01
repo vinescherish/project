@@ -43,7 +43,7 @@
 </div>
 <!-- 中部结束 -->
 <!-- 底部开始 -->
-@include('Home.home_layout._footer')
+{{--@include('Home.home_layout._footer')--}}
 <!-- 底部结束 -->
 <!-- 背景切换开始 -->
 @include('Home.home_layout._beijing')

@@ -112,7 +112,8 @@ class UserController extends BaseController
                 $data['shop_img']="";
                 //上传图片
                 if($request->file('shop_img')){
-                    $data['shop_img']=$request->file('shop_img')->store('shop_shops','public_images');
+                    $fileName=$request->file('shop_img')->store('shop_shops','oss');
+                    $data['shop_img'] = env("ALIYUN_OSS_URL") . $fileName;
                 }
                 $data["password"]=bcrypt($data["password"]);
                 //入商铺shops 库
@@ -196,7 +197,8 @@ class UserController extends BaseController
            //判断是否有上传新图片
            $data['shop_img']=$oldFach;
            if($request->file('shop_img')){
-               $data['shop_img']=$request->file("shop_img")->store("shop_shops","public_images");
+               $fileName=$request->file("shop_img")->store("shop_shops","oss");
+               $data['shop_img'] = env("ALIYUN_OSS_URL") . $fileName;
                //删除以前的图片
 //               dd($data['shop_img']);
               File::delete("uploads/$oldFach");

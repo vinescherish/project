@@ -20,7 +20,7 @@ class ShopController extends Controller
         }
         $shops=$qurey->get();
      foreach ($shops as $shop){
-         $shop->shop_img="/uploads/".$shop->shop_img;
+
          $shop->distance=rand(1111,345678);
          $shop->estimate_time=$shop->distance/23;
      }
@@ -32,7 +32,7 @@ class ShopController extends Controller
     public  function  index(Request $request){
      $id=$request->input('id');
      $shop=Shop::findOrFail($id);
-        $shop->shop_img="/uploads/".$shop->shop_img;
+
         $shop->distance=rand(1111,345678);
         $shop->estimate_time=$shop->distance/23;
 

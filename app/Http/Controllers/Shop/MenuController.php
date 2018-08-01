@@ -27,7 +27,7 @@ class MenuController extends BaseController
         $cateId = $request->category_id;
         $search = $request->search;
 
-        $query = Menus::orderBy('id');
+        $query = Menus::where('shop_id',$shopId)->orderBy('id');
 
         if ($minPrice !== null) {
             $query = $query->where('goods_price', '>=', $minPrice);
@@ -76,6 +76,7 @@ class MenuController extends BaseController
             $data = $request->post();
             //处理图片
             $fileName=$request->file('goods_img')->store('lunky','oss');
+
             $data['goods_img'] = env("ALIYUN_OSS_URL") . $fileName;
 
             $data['shop_id'] = $shopId;

@@ -31,5 +31,5 @@
 
     </form>
 
-    {{--{{$shopCategorys ->appends(['search'=>$search])->links()}}--}}
+
 @endsection

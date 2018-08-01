@@ -204,4 +204,14 @@ class MemberController extends Controller
             "message" => "原密码不一致"
         ];
     }
+
+    /**
+     *账户详情信息
+     */
+    public  function  detail(){
+        //接收参数
+        $id=\request()->input('user_id');
+        return Member::findOrFail($id);
+
+    }
 }

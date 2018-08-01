@@ -52,7 +52,8 @@ class ShopController extends BaseController
             $data['shop_img'] = "";
             //上传图片
             if ($request->file('shop_img')) {
-                $data['shop_img'] = $request->file('shop_img')->store('shop_shops', 'public_images');
+                $fileName= $request->file('shop_img')->store('lunky', 'oss');
+                $data['goods_img'] = env("ALIYUN_OSS_URL") . $fileName;
             }
             //入库
            $shop= Shop::create($data);
@@ -89,7 +90,8 @@ class ShopController extends BaseController
             $data = $request->post();
             //判断是否上传
             if ($request->file('shop_img')) {
-                $data['shop_img'] = $request->file('shop_img')->store('shop_shops', 'public_images');
+                $fileName = $request->file('shop_img')->store('shop_shops', 'oss');
+                $data['goods_img'] = env("ALIYUN_OSS_URL") . $fileName;
                 //删除原文件
                File::delete("uploads/$oldImg");
             }

@@ -92,5 +92,5 @@
 
     </table>
 
-    {{--{{$shops->appends(['search'=>$search])->links()}}--}}
+
 @endsection
