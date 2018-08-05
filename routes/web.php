@@ -11,21 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+//测试邮件
+Route::get('/mail', function () {
+    $order =\App\Models\Order::find(26);
+
+    return new \App\Mail\OrderShipped($order);
 });
-//Route::get('/Users/index',"Userscontroller@index" );
-//Route::any('/Users/add',"Userscontroller@add" );
-//Route::any('/Users/edit/{id}',"Userscontroller@edit" );
-//Route::get('/Users/del/{id}',"Userscontroller@del" );
-//Route::get('/Users/help',function (){
-//    return view("/Users/help");
-//} )->name('help');
-//Route::get('/Users/about',function (){
-//    return view("Users/about");
-//} )->name('abouts');
 //平台
 Route::domain('admin.ele.com')->namespace('Admin')->group(function () {
+
     //店铺分类
     Route::get('shop_category/index',"ShopCategoryController@index")->name('shop_category.index');
     Route::any('shop_category/add',"ShopCategoryController@add")->name('shop_category.add');
@@ -33,15 +30,6 @@ Route::domain('admin.ele.com')->namespace('Admin')->group(function () {
     Route::any('shop_category/del/{id}',"ShopCategoryController@del")->name('shop_category.del');
     //切换状态
     Route::any('shop_category/top/{id}',"ShopCategoryController@top")->name('shop_category.top');
-
-
-////商家信息
-
-    Route::get('shops/index',"ShopController@index")->name('shops.index');
-    Route::any('shops/add',"ShopController@add")->name('shops.add');
-    Route::any('shops/edit/{id}',"ShopController@edit")->name('shops.edit');
-    Route::get('shops/del/{id}',"ShopController@del")->name('shops.del');
-    Route::get('shops/show/{id}',"ShopController@show")->name('shops.show');
 
 
 //平台管理员
@@ -74,7 +62,6 @@ Route::domain('admin.ele.com')->namespace('Admin')->group(function () {
     Route::any('user/show/{id}',"UserController@show")->name('user.show');
     Route::any('user/add',"UserController@add")->name('user.add');
 
-
     //活动管理
     Route::get('active/index',"ActiveController@index")->name('active.index');
     Route::any('active/edit/{id}',"ActiveController@edit")->name('active.edit');
@@ -83,7 +70,62 @@ Route::domain('admin.ele.com')->namespace('Admin')->group(function () {
     Route::any('active/add',"ActiveController@add")->name('active.add');
     Route::any('active/show/{id}',"ActiveController@show")->name('active.show');
 
+    //订单数据管理
+    Route::get('order/index',"OrderController@index")->name('order.index');
+    Route::get('order/day',"OrderController@day")->name('order.day');
+    Route::get('order/month',"OrderController@month")->name('order.month');
+
+    //菜品销量管理
+    Route::get('order_good/day',"OrderGoodController@day")->name('order_good.day');
+    Route::get('order_good/month',"OrderGoodController@month")->name('order_good.month');
+    Route::get('order_good/index',"OrderGoodController@index")->name('order_good.index');
+
+
+    //权限管理
+    Route::get('per/index',"PermissionController@index")->name('per.index');
+    Route::any('per/add',"PermissionController@add")->name('per.add');
+    Route::any('per/edit/{id}',"PermissionController@edit")->name('per.edit');
+    Route::get('per/del/{id}',"PermissionController@del")->name('per.del');
+
+   //角色分组管理
+    Route::get('role/index',"RoleController@index")->name('role.index');
+    Route::any('role/add',"RoleController@add")->name('role.add');
+    Route::any('role/edit/{id}',"RoleController@edit")->name('role.edit');
+    Route::get('role/del/{id}',"RoleController@del")->name('role.del');
+
+   //导航菜单管理
+    Route::get('nav/index',"NavController@index")->name('nav.index');
+    Route::any('nav/add',"NavController@add")->name('nav.add');
+
+    //member管理
+    Route::get('member/index',"MemberController@index")->name('member.index');
+    Route::any('member/add',"MemberController@add")->name('member.add');
+    Route::any('member/edit/{id}',"MemberController@edit")->name('member.edit');
+    Route::get('member/del/{id}',"MemberController@del")->name('member.del');
+    Route::any('member/recharge/{id}',"MemberController@recharge")->name('member.recharge');
+
+    //抽奖管理
+    Route::get('event/index',"EventController@index")->name('event.index');
+    Route::any('event/add',"EventController@add")->name('event.add');
+    Route::any('event/edit/{id}',"EventController@edit")->name('event.edit');
+    Route::get('event/del/{id}',"EventController@del")->name('event.del');
+
+
+
+    //奖品管理
+    Route::get('event_prize/index',"EventPrizeController@index")->name('event_prize.index');
+    Route::any('event_prize/add',"EventPrizeController@add")->name('event_prize.add');
+    Route::any('event_prize/edit/{id}',"EventPrizeController@edit")->name('event_prize.edit');
+    Route::get('event_prize/del/{id}',"EventPrizeController@del")->name('event_prize.del');
 });
+
+
+
+
+
+
+
+
 
 //商户平台
 Route::domain('shop.ele.com')->namespace('Shop')->group(function () {
@@ -121,6 +163,25 @@ Route::domain('shop.ele.com')->namespace('Shop')->group(function () {
     Route::get('actives/index',"ActiveController@index")->name('actives.index');
     Route::any('actives/show/{id}',"ActiveController@show")->name('actives.show');
 
+
+    //订单统计管理
+    Route::get('orders/index',"OrderController@index")->name('orders.index');
+    Route::get('orders/day',"OrderController@day")->name('orders.day');
+    Route::get('orders/month',"OrderController@month")->name('orders.month');
+
+    //订单管理
+    Route::get('orders/lists',"OrderController@lists")->name('orders.lists');
+    Route::get('orders/show/{id}',"OrderController@show")->name('orders.show');
+    Route::get('orders/change/{id}/{status}',"OrderController@change")->name('orders.change');
+    Route::get('orders/false/{id}',"OrderController@false")->name('orders.false');
+
+
+
+
+    //菜品销量统计管理
+    Route::get('orders_good/day',"OrderGoodController@day")->name('orders_good.day');
+    Route::get('orders_good/month',"OrderGoodController@month")->name('orders_good.month');
+    Route::get('orders_good/index',"OrderGoodController@index")->name('orders_good.index');
 });
 
 

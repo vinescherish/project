@@ -166,6 +166,8 @@ return [
 //       短信验证
         Mrgoon\AliSms\ServiceProvider::class,
 
+       //RABC权限验证
+        Spatie\Permission\PermissionServiceProvider::class,
         /*
          * Package Service Providers...
          */

@@ -95,6 +95,75 @@
                     </li>
                 </ul>
             </li>
+            <li class="list" >
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe6a8;</i>
+                    订单管理
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu" style="display:none">
+                    <li>
+                        <a href="{{route('orders.lists')}}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            订单列表
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="list" >
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe6a8;</i>
+                   订单量统计
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu" style="display:none">
+                    <li>
+                        <a href="{{route('orders.day')}}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            每日订单量
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('orders.month')}}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            每月订单量
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('orders.index')}}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            订单计总
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="list" >
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe6a8;</i>
+                    菜品销量统计
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu" style="display:none">
+                    <li>
+                        <a href="{{route('orders_good.day')}}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            每日销售量
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('orders_good.month')}}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            每月销售量
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('orders_good.index')}}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            销售计总
+                        </a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </div>
 </div>

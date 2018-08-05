@@ -34,7 +34,7 @@
             <th><input type="checkbox" name="" value=""></th>
             <th>ID</th>
             <th>用户名</th>
-            {{--<th>所属商家</th>--}}
+            <th>所属角色</th>
             <th>邮箱地址</th>
             <th>是否管理员</th>
             <th>账户状态</th>
@@ -47,9 +47,9 @@
                 <td><input type="checkbox" value="1" name=""></td>
                 <td>{{$admin->id}}</td>
                 <td>{{$admin->name}}</td>
+                <td>{{ str_replace(['[',']','"'],'',json_encode($admin->getRoleNames(),JSON_UNESCAPED_UNICODE)) }}</td>
+
                 <td>{{$admin->email}}</td>
-               {{--<td>{{$admin->status==1?'是':'否'}}</td>--}}
-                {{--<td>{{$admin->status}}</td>--}}
 
                 @if($admin->status_admin==1)
                     <td class="td-status">
@@ -84,10 +84,12 @@
                        href="javascript:;" title="查看详情">
                         <a href=""><i class="layui-icon">&#xe649;</i></a>
                     </a>
-                    <a title="删除" href="javascript:;" onclick="member_del(this,'1')"
-                       style="text-decoration:none">
-                        <a href="{{route('admins.del',[$admin])}}"> <i class="layui-icon">&#xe640;</i></a>
-                    </a>
+                        @if($admin->id!==1)
+                        <a title="删除" href="javascript:;" onclick="member_del(this,'1')"
+                           style="text-decoration:none">
+                            <a href="{{route('admins.del',[$admin])}}"> <i class="layui-icon">&#xe640;</i></a>
+                        </a>
+                          @endif
                 </td>
             </tr>
         @endforeach

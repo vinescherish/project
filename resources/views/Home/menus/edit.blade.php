@@ -69,9 +69,9 @@
 
 
                     @if($menu->goods_img)
-                        <img src="/uploads/{{$menu->goods_img}}" width="80">
+                        <img src="{{$menu->goods_img}}" width="80">
                     @else
-                        <img src="/uploads/menus/1.jpeg" width="80">
+                        <img src="" width="80">
                     @endif
 
                     <input type="file" id="L_username" name="goods_img" lay-verify="nikename" autocomplete="off"

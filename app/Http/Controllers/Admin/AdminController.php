@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Mail\OrderShipped;
 use App\Models\Admin;
 
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Mrgoon\AliSms\AliSms;
+use Spatie\Permission\Models\Role;
 
 
 class AdminController extends BaseController
@@ -31,6 +34,8 @@ class AdminController extends BaseController
      * @param $id
      */
     public function edit(Request $request,$id){
+        //取出所有角色信息
+        $roles=Role::all();
         //得到当前用户
         $admin=Admin::find($id);
         $password=$admin->password;
@@ -42,8 +47,20 @@ class AdminController extends BaseController
             //判断是否修改密码,没有则以前的密码
             if(!$request->post('password')){
                 $data['password']=$password;
+//                dd( $data['password']);
+            }else{
+                $data['password']=bcrypt($request->post('password'));
             }
-            $data['password']=bcrypt($request->post('password'));
+
+            //给用户添加角色
+            if($request->post('role')){
+                $admin->syncRoles($request->post('role'));
+            }else{
+                $admin->syncRoles();
+            }
+
+
+
             //入库
             if ($admin->update($data)) {
 //                跳转
@@ -51,7 +68,7 @@ class AdminController extends BaseController
             }
         }
 
-        return view('Admin.shop_admin.edit',compact('admin'));
+        return view('Admin.shop_admin.edit',compact('admin','roles'));
     }
 
     /**
@@ -59,6 +76,9 @@ class AdminController extends BaseController
      */
     public function del(Request $request,$id){
         //找到用户
+        if ($id==1){
+            return redirect()->route('admins.lists')->with('danger','该用不能删除');
+        }
         $admin=Admin::find($id);
         //删除
         if ($admin->delete()) {
@@ -108,6 +128,7 @@ class AdminController extends BaseController
                 //跳转
                 return redirect()->route('admins.lists');
             }else{
+                //dd('ddd');
                 return redirect()->route('admins.login');
             }
         }
@@ -120,12 +141,17 @@ class AdminController extends BaseController
     public  function top(Request $request,$id){
         //得到当前数据
         $admin=Admin::find($id);
+        if ($admin->id==1){
+            return back()->with('danger','该用户不可更改');
+        }
         if($admin->status==1){
             $admin->status=0;
         }else{
             $admin->status=1;
         }
-
+        $order =\App\Models\Order::find(26);
+        //通过审核发送邮件
+        Mail::to($admin)->send(new  OrderShipped($order));
         $admin->save();
         return redirect()->route('admins.lists');
     }

@@ -2,7 +2,7 @@
     @if(session()->has($msg))
         <div class="layui-form-item">
             {{--<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>--}}
-            <p class="label label-{{$msg}}">
+            <p class="label-success-{{$msg}}">
                 {{session()->get($msg)}}
             </p>
         </div>

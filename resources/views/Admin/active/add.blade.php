@@ -1,5 +1,5 @@
 @extends("Admin.admin_layout.default")
-@section("title",'商铺查看修改')
+@section("title",'添加活动')
 @section("content")
 
 
@@ -65,10 +65,10 @@
             <div class="layui-form-item">
                 <label class="layui-form-label xbs768">日期范围</label>
                 <div class="layui-input-inline xbs768">
-                    <input    class="layui-input" placeholder="开始日" id="LAY_demorange_s" name="start_time" required="">
+                    <input    class="layui-input" placeholder="开始日" id="LAY_demorange_s" name="start" required="">
                 </div>
                 <div class="layui-input-inline xbs768">
-                    <input class="layui-input" placeholder="截止日" id="LAY_demorange_e" name="end_time" required="">
+                    <input class="layui-input" placeholder="截止日" id="LAY_demorange_e" name="end" required="">
                 </div>
             </div>
             {{--<div class="layui-form-item">--}}
@@ -146,9 +146,6 @@
                     活动内容
                 </label>
                 <div class="layui-input-block">
-                {{--<textarea placeholder="随便写些什么刷下存在感" id="L_sign" name="discount" autocomplete="off"--}}
-                {{--lay-verify="required"                         class="layui-textarea" style="height: 80px;"></textarea>--}}
-                <!-- 实例化编辑器 -->
                     <script type="text/javascript">
                         var ue = UE.getEditor('container');
                         ue.ready(function () {

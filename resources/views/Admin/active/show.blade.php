@@ -3,10 +3,10 @@
 @section("content")
 
 
-    <div class="login-box" style="width: 110%;height: 100%;align-items: center">
+    <div class="login-box" style="width: 100%;height: 100%;align-items: center">
         {{--<h1><big>账号信息</big></h1>--}}
 
-        <form class="layui-form layui-form-pane" action="" method="post" style="width: 100%"
+        <form class="layui-form layui-form-pane"  action="" method="post" style="width: 80%"
               enctype="multipart/form-data">
             {{csrf_field()}}
 
@@ -144,9 +144,7 @@
             {{--</div>--}}
             {{--</div>--}}
             <div class="layui-form-item layui-form-text">
-                <label for="L_sign" class="layui-form-label">
-                    活动内容
-                </label>
+
                 <div class="layui-input-block">
                 {{--<textarea placeholder="随便写些什么刷下存在感" id="L_sign" name="discount" autocomplete="off"--}}
                 {{--lay-verify="required"                         class="layui-textarea" style="height: 80px;"></textarea>--}}

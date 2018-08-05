@@ -15,6 +15,18 @@
                 </select>
             </div>
         </div>
+
+        <div class="layui-form-item">
+            <label for="L_username" class="layui-form-label">
+                <span class="x-red"></span>所属角色
+            </label>
+            @foreach($roles as $role)
+                <div class="layui-input-inline">
+                    <input type="checkbox"  name="role[]"          value="{{$role->id}}" @if($admin->hasRole($role->name))checked  @endif title="{{$role->name}}" >
+                </div>
+            @endforeach
+        </div>
+
         <div class="layui-form-item">
             <label for="L_username" class="layui-form-label">
                 <span class="x-red"></span>用户名

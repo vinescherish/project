@@ -66,7 +66,7 @@
                 <div class="layui-input-inline">
 
                     <div class="layui-input-inline">
-                        <img src="/uploads/{{$shop->shop_img}}" alt="" width="80">
+                        <img src="{{$shop->shop_img}}" alt="" width="80">
                     </div>
                     <input type="file" id="L_username" name="shop_img"  lay-verify="nikename" autocomplete="off" class="layui-input" style="width: 180%">
                 </div>

@@ -50,9 +50,9 @@
                 <td>{{$shop->shopCate->name}}</td>
                 <td>{{$shop->shop_name}}</td>
                 @if($shop->shop_img)
-                    <td><img src="/uploads/{{$shop->shop_img}}" width="80"></td>
+                    <td><img src="{{$shop->shop_img}}" width="80"></td>
                 @else
-                    <td><img src="/uploads/shop_shops/1.jpeg" width="80"></td>
+                    <td><img src="" width="80"></td>
                 @endif
                 <td>{{$shop->shop_rating}}</td>
                 <td>{{$shop->brand==1?'是':'否'}}</td>

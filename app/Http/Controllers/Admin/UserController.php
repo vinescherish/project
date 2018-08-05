@@ -53,6 +53,7 @@ class UserController extends BaseController
             $data['password']=bcrypt($request->post('password'));
             //入库
             if ($user->update($data)) {
+                $request->session()->flash('success','修改成功');
 //                跳转
                 return redirect()->route('user.lists');
             }
@@ -93,7 +94,7 @@ class UserController extends BaseController
         //得到商家分类
         $shopCates=ShopCategory::all();
         //判断还是否POST提交
-
+// dd($shopCates);
         if($request->isMethod('post')){
 
             DB::transaction(function () use($request) {
@@ -127,7 +128,7 @@ class UserController extends BaseController
 
 
 
-        return view('Admin.shop_users.reg', compact('shopCates'));
+        return view('Admin.shop_users.regs', compact('shopCates'));
     }
 
     /**
