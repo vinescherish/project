@@ -1,1 +1,1 @@
-收到新的订单编号为{{$order->order_code}}未处理。
+恭喜你在此次活动中荣获{{$prize->name}},获得{{$prize->description}},感谢您的参与！

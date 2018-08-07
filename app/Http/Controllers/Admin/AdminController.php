@@ -149,9 +149,9 @@ class AdminController extends BaseController
         }else{
             $admin->status=1;
         }
-        $order =\App\Models\Order::find(26);
-        //通过审核发送邮件
-        Mail::to($admin)->send(new  OrderShipped($order));
+//        $order =\App\Models\Order::find(26);
+//        //通过审核发送邮件
+//        Mail::to($admin)->send(new  OrderShipped($order));
         $admin->save();
         return redirect()->route('admins.lists');
     }

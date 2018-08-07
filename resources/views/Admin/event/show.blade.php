@@ -1,5 +1,5 @@
 @extends("Admin.admin_layout.default")
-@section("title",'抽奖列表')
+@section("title",'查询结果')
 @section("content")
 
     <form class="layui-form xbs" action="" method="get">
@@ -26,73 +26,61 @@
     <xblock>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon">&#xe640;</i>批量删除</button>
         <button class="layui-btn" onclicks="member_add('添加用户','/shop/member-add.html','600','500')">
-            <a href="{{route('event.add')}}"><i class="layui-icon">&#xe608;</i>添加</a></button>
+            <a href="{{route('event_prize.add')}}"><i class="layui-icon">&#xe608;</i>添加</a></button>
         <span class="x-right" style="line-height:40px">共有数据：88 条</span></xblock>
     <table class="layui-table">
         <thead>
         <tr>
             <th><input type="checkbox" name="" value=""></th>
             <th>ID</th>
-            <th>名称</th>
-            <th>详情</th>
-            <th>限定人数</th>
-            <th>报名商家数</th>
-            <th>报名开始时间</th>
-            <th>结束报名时间</th>
-            <th>开奖时间</th>
-            <th>状态</th>
-            <th>操作</th>
+            <th>奖品名称</th>
+            <th>获奖用户</th>
+
+
         </tr>
         </thead>
         <tbody>
-        @foreach($events as $event)
+        @foreach($prizes as $prize)
             <tr>
                 <td><input type="checkbox" value="1" name=""></td>
-                <td>{{$event->id}}</td>
-                <td>{{$event->title}}</td>
-                <td>{!! $event->content !!}</td>
-                <td>{!! $event->num !!}</td>
-                <td>{{$event->eventUser->pluck('user_id')->count()}}</td>
-                <td>{{$event->start_time}}</td>
-                <td>{{$event->end_time}}</td>
-                <td>{{$event->prize_time}}</td>
-
-
-                @if($event->is_prize==1)
-                    <td class="td-status">
-                        <span class="layui-btn layui-btn-normal layui-btn-small">已开奖</span>
-                    </td>
+                <td>{{$prize->id}}</td>
+                <td>{{$prize->name}}</td>
+                @if($prize->user_id)
+                    <td>{{$prize->user->name}}</td>
                 @else
-                    <td class="td-status">
-                        <span class="layui-btn layui-btn-normal layui-btn-small">未开奖</span>
-                    </td>
+                    <td>未开奖</td>
                 @endif
 
-                <td class="td-status">
-                    @if($event->is_prize !==1)
-                        <a href="{{route('event.begin',[$event])}}"> <span
-                                    class="layui-btn layui-btn-normal layui-btn-mini">开奖</span></a>
+                {{--@if($event->is_prize==1)--}}
+                    {{--<td class="td-status">--}}
+                        {{--<span class="layui-btn layui-btn-normal layui-btn-normal">已开奖</span>--}}
+                    {{--</td>--}}
+                {{--@else--}}
+                    {{--<td class="td-status">--}}
+                        {{--<span class="layui-btn layui-btn-normal layui-btn-danger">未开奖</span>--}}
+                    {{--</td>--}}
+                {{--@endif--}}
 
+                {{--<td class="td-status">--}}
 
-
-                    <a title="编辑" href="javascript:;" onclick="member_edit('编辑','member-edit.html','4','','510')"
-                       class="ml-5" style="text-decoration:none">
-                        <a href="{{route('event.edit',[$event])}}"><i class="layui-icon">&#xe642;</i></a>
-                    </a>
+                    {{--@if($prize->user_id)--}}
+                    {{--<a href="#"> <span class="layui-btn layui-btn-normal layui-btn-mini">已开奖</span></a>--}}
+                    {{--@else--}}
+                    {{--<a title="编辑" href="javascript:;" onclick="member_edit('编辑','member-edit.html','4','','510')"--}}
+                       {{--class="ml-5" style="text-decoration:none">--}}
+                        {{--<a href="{{route('event_prize.edit',[ $prize])}}"><i class="layui-icon">&#xe642;</i></a>--}}
+                    {{--</a>--}}
                     {{--<a style="text-decoration:none"--}}
                     {{--onclick="member_password('修改密码','member-password.html','10001','600','400')"--}}
                     {{--href="javascript:;" title="查看详情">--}}
                     {{--<a href="#"><i class="layui-icon">&#xe648;</i></a>--}}
                     {{--</a>--}}
-                    <a title="删除" href="javascript:;" onclick="member_del(this,'1')"
-                       style="text-decoration:none">
-                        <a href="{{route('event.del',[$event])}}"> <i class="layui-icon">&#xe640;</i></a>
-                    </a>
-
-                    @else
-                        <a href="{{route('event.show',[$event])}}"> <span class="layui-btn layui-btn-normal layui-btn-mini">查看结果</span></a>
-                    @endif
-                </td>
+                    {{--<a title="删除" href="javascript:;" onclick="member_del(this,'1')"--}}
+                       {{--style="text-decoration:none">--}}
+                        {{--<a href="{{route('event_prize.del',[ $prize])}}"> <i class="layui-icon">&#xe640;</i></a>--}}
+                    {{--</a>--}}
+                        {{--@endif--}}
+                {{--</td>--}}
             </tr>
         @endforeach
         </tbody>

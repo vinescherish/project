@@ -1,4 +1,4 @@
-@extends("Admin.admin_layout.default")
+@extends("Home.home_layout.default")
 @section("title",'抽奖列表')
 @section("content")
 
@@ -35,8 +35,8 @@
             <th>ID</th>
             <th>名称</th>
             <th>详情</th>
-            <th>限定人数</th>
-            <th>报名商家数</th>
+            <th>限定商家</th>
+            <th>已报名商家</th>
             <th>报名开始时间</th>
             <th>结束报名时间</th>
             <th>开奖时间</th>
@@ -58,9 +58,10 @@
                 <td>{{$event->prize_time}}</td>
 
 
+
                 @if($event->is_prize==1)
                     <td class="td-status">
-                        <span class="layui-btn layui-btn-normal layui-btn-small">已开奖</span>
+                        <a href="{{route('events.show',[$event])}}"><span class="layui-btn layui-btn-normal layui-btn-small">查看结果</span></a>
                     </td>
                 @else
                     <td class="td-status">
@@ -69,29 +70,24 @@
                 @endif
 
                 <td class="td-status">
-                    @if($event->is_prize !==1)
-                        <a href="{{route('event.begin',[$event])}}"> <span
-                                    class="layui-btn layui-btn-normal layui-btn-mini">开奖</span></a>
-
-
-
-                    <a title="编辑" href="javascript:;" onclick="member_edit('编辑','member-edit.html','4','','510')"
-                       class="ml-5" style="text-decoration:none">
-                        <a href="{{route('event.edit',[$event])}}"><i class="layui-icon">&#xe642;</i></a>
-                    </a>
-                    {{--<a style="text-decoration:none"--}}
-                    {{--onclick="member_password('修改密码','member-password.html','10001','600','400')"--}}
-                    {{--href="javascript:;" title="查看详情">--}}
-                    {{--<a href="#"><i class="layui-icon">&#xe648;</i></a>--}}
-                    {{--</a>--}}
-                    <a title="删除" href="javascript:;" onclick="member_del(this,'1')"
-                       style="text-decoration:none">
-                        <a href="{{route('event.del',[$event])}}"> <i class="layui-icon">&#xe640;</i></a>
-                    </a>
-
-                    @else
-                        <a href="{{route('event.show',[$event])}}"> <span class="layui-btn layui-btn-normal layui-btn-mini">查看结果</span></a>
+@if($event->is_prize==0 && !in_array($userId,$event->eventUser->pluck('user_id')->toArray()))
+                    <a href="{{route('events.join',[$event])}}">  <span class="layui-btn layui-btn-normal layui-btn-small">报名参加</span></a>
+@else
+                    <a href="#">  <span class="layui-btn layui-btn-normal layui-btn-small">已报名</span></a>
                     @endif
+                    {{--<a title="编辑" href="javascript:;" onclick="member_edit('编辑','member-edit.html','4','','510')"--}}
+                       {{--class="ml-5" style="text-decoration:none">--}}
+                        {{--<a href="{{route('event.edit',[$event])}}"><i class="layui-icon">&#xe642;</i></a>--}}
+                    {{--</a>--}}
+                    {{--<a style="text-decoration:none"--}}
+                       {{--onclick="member_password('修改密码','member-password.html','10001','600','400')"--}}
+                       {{--href="javascript:;" title="查看详情">--}}
+                        {{--<a href="#"><i class="layui-icon">&#xe648;</i></a>--}}
+                    {{--</a>--}}
+                    {{--<a title="删除" href="javascript:;" onclick="member_del(this,'1')"--}}
+                       {{--style="text-decoration:none">--}}
+                        {{--<a href="{{route('event.del',[$event])}}"> <i class="layui-icon">&#xe640;</i></a>--}}
+                    {{--</a>--}}
                 </td>
             </tr>
         @endforeach

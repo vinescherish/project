@@ -90,7 +90,13 @@
                     <li>
                         <a href="{{route('actives.index')}}">
                             <i class="iconfont">&#xe6a7;</i>
-                            活动列表
+                            优惠活动
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('events.index')}}">
+                            <i class="iconfont">&#xe6a7;</i>
+                           抽奖活动
                         </a>
                     </li>
                 </ul>

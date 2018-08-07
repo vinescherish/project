@@ -109,6 +109,8 @@ Route::domain('admin.ele.com')->namespace('Admin')->group(function () {
     Route::any('event/add',"EventController@add")->name('event.add');
     Route::any('event/edit/{id}',"EventController@edit")->name('event.edit');
     Route::get('event/del/{id}',"EventController@del")->name('event.del');
+    Route::get('event/begin/{id}',"EventController@begin")->name('event.begin');
+    Route::get('event/show/{id}',"EventPrizeController@show")->name('event.show');
 
 
 
@@ -162,6 +164,11 @@ Route::domain('shop.ele.com')->namespace('Shop')->group(function () {
 //活动管理
     Route::get('actives/index',"ActiveController@index")->name('actives.index');
     Route::any('actives/show/{id}',"ActiveController@show")->name('actives.show');
+
+    //抽奖活动
+    Route::get('events/index',"EventController@index")->name('events.index');
+    Route::get('events/join/{id}',"EventController@join")->name('events.join');
+    Route::get('events/show/{id}',"EventPrizeController@show")->name('events.show');
 
 
     //订单统计管理
