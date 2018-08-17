@@ -48,4 +48,9 @@ Route::namespace('Api')->group(function () {
     Route::get('order/get', 'OrderController@get');
     Route::post('order/pay', 'OrderController@pay');
     Route::get('order/lists', 'OrderController@lists');
+
+    //微信扫码支付
+    Route::any('order/wxPay', 'OrderController@wxPay');
+    Route::any('order/status', 'OrderController@status');
+    Route::any('order/ok', 'OrderController@ok');
 });

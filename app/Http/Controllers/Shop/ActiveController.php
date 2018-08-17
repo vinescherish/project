@@ -6,7 +6,7 @@ use App\Models\Active;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ActiveController extends Controller
+class ActiveController extends BaseController
 {
 
     /**

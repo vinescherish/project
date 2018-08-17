@@ -37,7 +37,7 @@
             <th>联系电话</th>
             <th>账户金额</th>
             <th>账户积分</th>
-            {{--<th>账户状态</th>--}}
+
             <th>操作</th>
         </tr>
         </thead>
@@ -76,5 +76,5 @@
 
     </table>
 
-    {{--{{$members->appends(['search'=>$search])->links()}}--}}
+
 @endsection

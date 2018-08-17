@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Mail\OrderShipped;
 use App\Models\Event;
 use App\Models\EventMember;
+use App\Models\EventPrize;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -67,18 +68,40 @@ class EventController extends Controller
         //读出所有属于此活动的奖品信息
         $prizes = $event->prizes;
 
-        foreach ($prizes as $k => $prize) {
-            //循环赋值
-            $prize->user_id = $users[$k];
-            $prize->save();
-            //发送邮件
-            //1.得到用户
-            $user=User::findOrFail($users[$k]);
-            //通知
-            Mail::to($user)->send(new  OrderShipped($prize));
+        $prizeId=$prizes->pluck('id')->toArray();
+        shuffle($prizeId);
+
+//        dd($prizes->count()>count($users));
+        if ($prizes->count()<count($users)){
+            foreach ($prizes as $k => $prize) {
+                //循环赋值
+                if(count($users)===$k){
+                    break;
+                }
+                $prize->user_id = $users[$k];
+                $prize->save();
+                //发送邮件
+                //1.得到用户
+                $user=User::findOrFail($users[$k]);
+                //通知
+                Mail::to($user)->send(new  OrderShipped($prize));
+
+            }
+        }else{
+            foreach ($users as $k => $userId) {
+
+                //循环赋值
+              $prize= EventPrize::findOrFail($prizeId[$k]);
+                $prize->user_id =$userId;
+                $prize->save();
+                //发送邮件
+                //1.得到用户
+                $user=User::findOrFail($userId);
+
+                //通知
+                Mail::to($user)->send(new  OrderShipped($prize));
+            }
         }
-
-
         $event->is_prize = 1;
         $event->save();
         return redirect()->route('event.index')->with('success', '开奖成功');

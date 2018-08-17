@@ -163,9 +163,13 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-//       短信验证
+       //短信验证
         Mrgoon\AliSms\ServiceProvider::class,
-
+        /**
+         * TNTSearch 全文搜索
+         */
+        Laravel\Scout\ScoutServiceProvider::class,
+        Vanry\Scout\TNTSearchScoutServiceProvider::class,
        //RABC权限验证
         Spatie\Permission\PermissionServiceProvider::class,
         /*

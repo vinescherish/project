@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 /**
  * App\Models\Shop
@@ -51,6 +52,19 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Shop extends Model
 {
+    use   Searchable;
+
+    /**
+     * 索引的字段
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+        return $this->only('id', 'shop_name');
+    }
+
+
     //设置可修改字段
     public  $fillable=['shop_name','shop_category_id','shop_img','shop_rating','brand','on_time','niao','bao','piao','zhun','start_send','start_cost','notice','discount','user_id'];
 

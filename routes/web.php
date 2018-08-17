@@ -11,9 +11,9 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/', function () {
+    return view('index');
+});
 //测试邮件
 Route::get('/mail', function () {
     $order =\App\Models\Order::find(26);
@@ -165,11 +165,11 @@ Route::domain('shop.ele.com')->namespace('Shop')->group(function () {
     Route::get('actives/index',"ActiveController@index")->name('actives.index');
     Route::any('actives/show/{id}',"ActiveController@show")->name('actives.show');
 
-    //抽奖活动
+    // region 抽奖活动
     Route::get('events/index',"EventController@index")->name('events.index');
     Route::get('events/join/{id}',"EventController@join")->name('events.join');
     Route::get('events/show/{id}',"EventPrizeController@show")->name('events.show');
-
+    //endregion
 
     //订单统计管理
     Route::get('orders/index',"OrderController@index")->name('orders.index');
@@ -190,6 +190,21 @@ Route::domain('shop.ele.com')->namespace('Shop')->group(function () {
     Route::get('orders_good/month',"OrderGoodController@month")->name('orders_good.month');
     Route::get('orders_good/index',"OrderGoodController@index")->name('orders_good.index');
 });
+
+Route::get('/order/clear', function () {
+    //处理超时未支付的订单
+    /**
+     * 1.找出 超时   未支付   订单
+     * 当前时间-创建时间>15*60
+     * 当前时间-15*60>创建时间
+     * 创建时间<当前时间-15*60
+     * */
+    while (true){
+        $orders=\App\Models\Order::where("status",0)->where('created_at','<',date("Y-m-d H:i:s",(time()-15*60)))->update(['status'=>-1]);
+        sleep(5);
+    }
+});
+
 
 
 

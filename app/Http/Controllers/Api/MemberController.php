@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Api;
 use App\Models\Member;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Validator;
@@ -25,8 +26,9 @@ class MemberController extends Controller
         //生产验证码
         $code = rand(1000, 9999);
         //把验证码存redis
-        Redis::setex("tel_" . $tel, 300, $code);
-
+//        Redis::setex("tel_" . $tel, 300, $code);
+        //把验证码存缓存
+        Cache::put('tel_'.$tel,$code,60*60);
         //测试
         return [
             "status" => "true",
@@ -67,7 +69,10 @@ class MemberController extends Controller
         //接收参数
         $data = \request()->all();
         //取出验证码
-        $code = Redis::get("tel_" . $data['tel']);
+//        $code = Redis::get("tel_" . $data['tel']);
+        $code=Cache::get('tel_'.$data['tel']);
+
+//        dd($code,$data['sms']);
         //创建一个验证规则
         $validata = Validator::make($data, [
             'username' => 'required|unique:members',
@@ -84,7 +89,7 @@ class MemberController extends Controller
         }
 
         //验证验证码
-        if ($data['sms'] !== $code) {
+        if ($data['sms'] != $code) {
             return [
                 'status' => "false",
                 "message" => "验证码错误",
